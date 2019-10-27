@@ -1,0 +1,23 @@
+<!-- <div class="container">
+  <div *ngFor="let follower of followers" class="row">
+    <div class="col-sm">{{follower.name}}</div>
+    <div class="col-sm">{{follower.username}}</div>
+    <div class="col-sm">{{follower.email}}</div>
+    <div class="col-sm">{{follower.address}}</div>
+  </div>
+</div> -->
+
+
+<div *ngFor="let follower of followers" class="media">
+    <div class="media-left">
+      <a href="#">
+        <img class="smallRounded avatar media-object" src="{{ follower.avatar_url }}" alt="...">
+      </a>
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading">
+        <a href="#">{{ follower.login }}</a>
+      </h4>
+      <a href="follower.html_url">{{ follower.html_url }}</a>
+    </div>
+  </div>

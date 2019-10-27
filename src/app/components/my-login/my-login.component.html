@@ -1,0 +1,74 @@
+<form [formGroup]='myForm'  (ngSubmit)="check()">
+  <h2>Account Info</h2>
+  <stars></stars>
+  <div class="form-group">
+    <label for="username">User Name
+      <input  formControlName="username"  
+              autocomplete="off" 
+              class="form-control" 
+              type="text" 
+              id="username">
+      <div *ngIf="username.touched && username.invalid" 
+            class="alert alert-danger">
+          <div *ngIf="username.errors.required"> name is Required! </div>
+          <div *ngIf="username.errors.minlength"> Minimum length {{username.errors.minlength.requiredLength}}  </div>
+          <div *ngIf="username.errors.mustNotContainSpaces"> Must not contain space!</div>
+
+      </div>
+    </label>
+    <div class="filteredName"> {{ myForm.value.username | summary:5}} </div>
+  </div>
+  <div class="form-group">
+    <label for="password">Password
+      <input formControlName="password"  class="form-control" type="password" id="password">
+      <div *ngIf="password.touched && password.invalid"  class="alert alert-danger">
+          <div *ngIf="password.errors.required"> Password is Required! </div>
+          <div *ngIf="password.errors.minlength"> Minimum length {{password.errors.minlength.requiredLength}} </div>
+      </div>
+    </label>
+  </div>
+  <div class="form-group">
+      <label for="confirmPassword">confirm Password
+        <input formControlName="confirmPassword"  class="form-control" type="password" id="confirmPassword">
+        <div *ngIf="confirmPassword.touched  && confirmPassword.invalid"  class="alert alert-danger">
+            <div *ngIf="confirmPassword.errors.required"> Confirm Password is Required! </div>
+            <div *ngIf="confirmPassword.errors.minlength"> Minimum length {{confirmPassword.errors.minlength.requiredLength}} </div>
+        </div>
+        <div *ngIf="confirmPassword.valid && myForm.errors &&  myForm.errors.passwordsDontMatch"  class="alert alert-danger">
+            Passwords don't match
+        </div>
+      </label>
+  </div>
+  <div formGroupName="extra" class="border  border-primary">
+    <h2>Extra Info</h2>
+    <div class="form-group">
+      <label for="email">Email
+        <input formControlName="email"  class="form-control" type="text" id="email">
+        <div *ngIf="email.touched && email.errors"  class="alert alert-danger">
+          Must enter a valid email
+      </div>
+      </label>
+    </div>
+    <div class="form-group">
+      <label for="mobile">Mobile
+        <input formControlName="mobile"  class="form-control" type="text" id="mobile">
+      </label>
+    </div>
+    <div class="form-group">
+      <label for="address">address
+        <input formControlName="address"  class="form-control" type="text" id="address">
+      </label>
+   </div>
+  </div>
+{{ myForm.value | json}}
+<br><br>
+  <button class="marginL30 btn btn-primary">Login</button>
+  <button type="button" class="marginL30 btn btn-primary" (click)='clear($event)'>Clear</button>
+  <button type="button" class="showPosts marginL30 btn btn-primary" (click)='getMyPosts()'>Posts</button>
+  <br>  <br>
+  <div >
+    <ul *ngFor="let post of posts" class="list-group">
+      <li  class="list-group-item">{{post.body}}</li>
+    </ul>
+  </div>
+</form>

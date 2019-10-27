@@ -1,0 +1,15 @@
+<form  [formGroup]='myForm' (ngSubmit)="formSubmit()">
+  <div class="formGroup">
+    <label for="name">Name</label>
+    <input formControlName="name" type="text" class="form-control" id="name" />
+  </div>
+  <div class="formGroup">
+      <label for="email">E-Mail</label>
+      <input  formControlName="email" type="text" class="form-control" id="email" />
+  </div>
+  <div class="formGroup">
+      <label for="phone">Phone</label>
+      <input formControlName="phone"  type="text" class="form-control" id="phone" />
+  </div>
+  <button class="btn btn-primary" type="submit">Submit</button>
+</form>

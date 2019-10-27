@@ -1,0 +1,8 @@
+<h3>Please rate it</h3>
+<span 
+  class="glyphicon"
+  [class.glyphicon-star]="isSelected"
+  [class.glyphicon-star-empty]="!isSelected"
+  (click)="onClick()"
+  style="font-size:22pt;" 
+  ></span>
